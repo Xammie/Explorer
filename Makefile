@@ -22,6 +22,7 @@ mutations: intro do-test-infection do-test-report
 pre-commit: intro do-lint-staged-files do-commit-intro
 codestyle: intro do-cs-ecs
 codestyle-fix: intro do-cs-ecs-fix
+analyse: intro do-phpstan
 
 # ===========================
 # Overview of commands
@@ -38,6 +39,7 @@ help:
 	@echo "\nDevelopment"
 	@echo "    make codestyle                 Check if the codestyle is OK."
 	@echo "    make codestyle-fix             Check and fix your messy codestyle."
+	@echo "    make analyse                   Check if the code is OK."
 
 # ===========================
 # Recipes
@@ -64,6 +66,9 @@ do-cs-ecs:
 
 do-cs-ecs-fix:
 	./vendor/bin/ecs check --fix --config=easy-coding-standard.php .
+
+do-phpstan:
+	./vendor/bin/phpstan analyse
 
 do-clean:
 	@echo "\n=== 🧹 Cleaning up ===\n"
